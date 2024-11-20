@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Login</h2>
+    <th:block th:if="${param.error}">
+        <p class="text-center" style="color:red;">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+    </th:block>
+
+    <th:block th:if="${param.logout}">
+        <p class="text-center" style="color:green;">Logout successfully!!</p>
+    </th:block>
+
+    <form action="/userLogin" method="post" class="mt-4">
+        <div class="mb-3">
+            <label for="username" class="form-label">Email</label>
+            <input type="email" id="username" name="username" class="form-control" placeholder="Enter your email" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+</div>
+</body>
+</html>
